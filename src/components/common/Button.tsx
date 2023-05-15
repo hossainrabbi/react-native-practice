@@ -5,6 +5,7 @@ import {
   StyleProp,
   StyleSheet,
   Text,
+  ViewStyle,
 } from "react-native";
 import { colors } from "../../constants/Colors";
 import { spacing } from "../../constants/Spacing";
@@ -15,7 +16,7 @@ type ButtonType = {
   rippleColor?: string;
   bgColor?: string;
   size?: number;
-  style?: StyleProp<PressableProps>;
+  style?: StyleProp<ViewStyle>;
   children: React.ReactNode;
 } & PressableProps;
 
@@ -29,13 +30,14 @@ export default function Button({
   style,
   ...rest
 }: ButtonType) {
-  const pressStyles = StyleSheet.compose(styles.root, style && style);
+  // const pressStyles = StyleSheet.compose(styles.root, style);
 
   return (
     <Pressable
       android_ripple={{ color: rippleColor }}
-      style={() => [
-        pressStyles,
+      style={[
+        styles.root,
+        style,
         { backgroundColor: bgColor },
         rounded && styles.rounded,
       ]}
