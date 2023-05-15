@@ -1,11 +1,17 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { RootStackParamList } from "../../App";
 import Button from "../components/common/Button";
+import HeaderTitle from "../components/common/HeaderTitle";
+import Text from "../components/common/Text";
 import { colors } from "../constants/Colors";
 import { spacing } from "../constants/Spacing";
 
-export default function StartScreen() {
+type StartScreenProps = NativeStackScreenProps<RootStackParamList, "Start">;
+
+export default function StartScreen({ navigation }: StartScreenProps) {
   return (
     <View style={styles.root}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -19,13 +25,15 @@ export default function StartScreen() {
           </View>
           <View style={styles.content}>
             <View style={styles.textContent}>
-              <Text style={styles.title}>CookUp!</Text>
+              <HeaderTitle>CookUp!</HeaderTitle>
               <Text style={styles.description}>
                 3000+ easy and delicious recipes from the best chefs around the
                 world
               </Text>
             </View>
-            <Button>Get started</Button>
+            <Button onPress={() => navigation.navigate("SignUp")}>
+              Get started
+            </Button>
           </View>
         </View>
       </SafeAreaView>
@@ -57,13 +65,6 @@ const styles = StyleSheet.create({
   },
   textContent: {
     paddingHorizontal: spacing[5],
-  },
-  title: {
-    color: colors.black,
-    fontSize: 34,
-    fontWeight: "900",
-    textAlign: "center",
-    marginBottom: 0,
   },
   description: {
     color: colors.black,

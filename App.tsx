@@ -9,7 +9,13 @@ import ShopScreen from "./src/screens/ShopScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import StartScreen from "./src/screens/StartScreen";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Start: undefined;
+  SignUp: undefined;
+  BottomTabs: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 // bottom tab navigation

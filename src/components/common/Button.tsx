@@ -34,7 +34,7 @@ export default function Button({
   return (
     <Pressable
       android_ripple={{ color: rippleColor }}
-      style={({ pressed }) => [
+      style={() => [
         pressStyles,
         { backgroundColor: bgColor },
         rounded && styles.rounded,
